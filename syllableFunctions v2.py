@@ -1,31 +1,18 @@
+#I've edited this so that only the code in question is here.
+
 # Loading Settings
 checkForSylBreak = True
 smartSearch = True
 
 # Loading Syllables
-file = open("C:/Users/agent/OneDrive/Documents/Conlangs University/Conlang-Code/Word Generation/allPossibleSymbols.txt","r") #Opens file
+file = open("allPossibleSymbols.txt","r") #Opens file
 syllables = file.read().split("\n")
 syllables.pop(0) #Encoding error
 print("Syllables loaded correctly",len(syllables),"found.")
 
-# Welcoming the user
-print("Welcome to the Sinkebwnja Word Checking program v2!")
-options = """[1] Check syllables
-[2] Shuffle syllable list
-[3] View syllables
-[4] View Changelog
-[5] Settings
-[6] Exit"""
-optionsIndex = [1,2,3,4,5,6]
-choice = -1
-while choice not in optionsIndex:
-    print(options)
-    choice = int(input("Please select an option by using its index: ").strip())
-    print(choice)
-    if choice not in optionsIndex:
-        print("Sorry, that is invalid. Please try again.")
 
 # Syllable Search
+choice = 1 
 if choice == 1:
     while True:
         validSyllables = []
@@ -34,7 +21,7 @@ if choice == 1:
         # Input validation: No '.'; no IPA symbols (/ [ ])
         syllableBreak = False
         IPAsymbols = False
-        IPAlist = ['/','[',']','ː','ˑ','ˈ','ˌ']
+        IPAlist = ['/','[',']','ː','ˑ','ˈ','ˌ'] #Symbols I don't want to have while searching - could be used by someone, so it checks for the basic ones
         for letter in word:
             if letter == '.':
                 syllableBreak = True
@@ -60,5 +47,4 @@ if choice == 1:
                     y = x
                     print(word[y:x],"found")
             print(word,validSyllables)
-
-                
+            
